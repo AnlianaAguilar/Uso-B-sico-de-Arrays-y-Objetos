@@ -1,5 +1,3 @@
-document.write('<p>Estadisticas centro medico ñuñoa</p>');
-
 let radiologia = [
     {
         HORA: "11:00",
@@ -136,35 +134,6 @@ let dental = [
     }
 ]
 
-
-var texto = "<tr><th>HORA</th><th>ESPECIALISTA</th><th>PACIENTE</th><th>RUT</th><th>PREVISION</th></tr>";
-
-// for (let i = 0; i < radiologia.length; i++){
-//     texto += `<tr>
-//                 <td>${radiologia[i].HORA}</td>
-//                 <td>${radiologia[i].ESPECIALISTA}</td>
-//                 <td>${radiologia[i].PACIENTE}</td>
-//                 <td>${radiologia[i].RUT}</td>
-//                 <td>${radiologia[i].PREVISION}</td>
-//             </tr>`
-// }
-
-
-
-
-radiologia.forEach(visita => {
-    texto += `<tr>
-                <td>${visita.HORA}</td>
-                <td>${visita.ESPECIALISTA}</td>
-                <td>${visita.PACIENTE}</td>
-                <td>${visita.RUT}</td>
-                <td>${visita.PREVISION}</td>
-            </tr>`
-});
-
-document.getElementById("cuerpo_tabla").innerHTML = texto
-
-
 //Primera y ultima atención paciente Radiologia
 let primeroRadiologia = radiologia[0].PACIENTE +"-"+ radiologia[0].PREVISION
 let ultimoRadiologia = radiologia[radiologia.length-1].PACIENTE +"-"+ radiologia[radiologia.length-1].PREVISION
@@ -183,3 +152,68 @@ let primero_dental = dental[0].PACIENTE +"-"+ dental[0].PREVISION
 let ultima_dental = dental[dental.length-1].PACIENTE +"-"+ dental[dental.length-1].PREVISION
 
 document.getElementById("parrafo").innerHTML += `<h2> - DENTAL</h2><p>Primera atención: ${primero_dental}<p/><p>Última atención: ${ultima_dental}</p><hr/>` 
+
+
+
+// Tabla de pacientes Radiologia
+let tabla_radiologia = `<tr><th>HORA</th><th>ESPECIALISTA</th><th>PACIENTE</th><th>RUT</th><th>PREVISION</th></tr>`;
+
+radiologia.forEach(visita => {
+    tabla_radiologia += `<tr>
+                <td>${visita.HORA}</td>
+                <td>${visita.ESPECIALISTA}</td>
+                <td>${visita.PACIENTE}</td>
+                <td>${visita.RUT}</td>
+                <td>${visita.PREVISION}</td>
+            </tr>`
+});
+
+document.getElementById("cuerpo_tabla").innerHTML = tabla_radiologia
+
+//Tabla de pacientes Traumatología
+let tabla_traumatologia = `<tr><th>HORA</th><th>ESPECIALISTA</th><th>PACIENTE</th><th>RUT</th><th>PREVISION</th></tr>`;
+
+traumatologia.forEach(visita =>{
+    tabla_traumatologia += `<tr>
+                                <td>${visita.HORA}</td>
+                                <td>${visita.ESPECIALISTA}</td>
+                                <td>${visita.PACIENTE}</td>
+                                <td>${visita.RUT}</td>
+                                <td>${visita.PREVISION}</td>
+                            </tr>`
+})
+
+document.getElementById("cuerpo_tabla_traumatologia").innerHTML = tabla_traumatologia
+
+//Tabla de pacientes Traumatología
+let tabla_dental = `<tr><th>HORA</th><th>ESPECIALISTA</th><th>PACIENTE</th><th>RUT</th><th>PREVISION</th></tr>`;
+
+dental.forEach(visita =>{
+    tabla_dental += `<tr>
+                        <td>${visita.HORA}</td>
+                        <td>${visita.ESPECIALISTA}</td>
+                        <td>${visita.PACIENTE}</td>
+                        <td>${visita.RUT}</td>
+                        <td>${visita.PREVISION}</td>
+                    </tr>`
+})
+
+document.getElementById("cuerpo_tabla_dental").innerHTML = tabla_dental 
+
+
+
+
+/*
+//otra foema de realizar la tabla con un for
+
+for (let i = 0; i < radiologia.length; i++){
+    texto += `<tr>
+                <td>${radiologia[i].HORA}</td>
+                <td>${radiologia[i].ESPECIALISTA}</td>
+                <td>${radiologia[i].PACIENTE}</td>
+                <td>${radiologia[i].RUT}</td>
+                <td>${radiologia[i].PREVISION}</td>
+            </tr>`
+}
+
+*/
