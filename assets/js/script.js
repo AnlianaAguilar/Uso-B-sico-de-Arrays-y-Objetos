@@ -139,28 +139,47 @@ let dental = [
 
 var texto = "<tr><th>HORA</th><th>ESPECIALISTA</th><th>PACIENTE</th><th>RUT</th><th>PREVISION</th></tr>";
 
-for (let i = 0; i < radiologia.length; i++){
+// for (let i = 0; i < radiologia.length; i++){
+//     texto += `<tr>
+//                 <td>${radiologia[i].HORA}</td>
+//                 <td>${radiologia[i].ESPECIALISTA}</td>
+//                 <td>${radiologia[i].PACIENTE}</td>
+//                 <td>${radiologia[i].RUT}</td>
+//                 <td>${radiologia[i].PREVISION}</td>
+//             </tr>`
+// }
+
+
+
+
+radiologia.forEach(visita => {
     texto += `<tr>
-                <td>${radiologia[i].HORA}</td>
-                <td>${radiologia[i].ESPECIALISTA}</td>
-                <td>${radiologia[i].PACIENTE}</td>
-                <td>${radiologia[i].RUT}</td>
-                <td>${radiologia[i].PREVISION}</td>
+                <td>${visita.HORA}</td>
+                <td>${visita.ESPECIALISTA}</td>
+                <td>${visita.PACIENTE}</td>
+                <td>${visita.RUT}</td>
+                <td>${visita.PREVISION}</td>
             </tr>`
-}
+});
 
 document.getElementById("cuerpo_tabla").innerHTML = texto
 
 
+//Primera y ultima atención paciente Radiologia
+let primeroRadiologia = radiologia[0].PACIENTE +"-"+ radiologia[0].PREVISION
+let ultimoRadiologia = radiologia[radiologia.length-1].PACIENTE +"-"+ radiologia[radiologia.length-1].PREVISION
 
-// for (var i = 0; i < dental.length; i++){
-//     document.write(dental[i])
-    
+document.getElementById("parrafo").innerHTML += `<h2> - RADIOLOGÍA</h2><p>Primera atención: ${primeroRadiologia} </p><p>Última atención: ${ultimoRadiologia}</p> <hr/>`  
 
-// }
-// for (propiedad in dental){
-//     document.write("for in", propiedad)
-// }
-// for ( let den of dental){
-//     document.write(den)
-// }
+
+//Primera y ultima atención paciente Radiologia
+let primero_traumatologia = traumatologia[0].PACIENTE +"-"+ traumatologia[0].PREVISION
+let ultimo_traumatologia = traumatologia[traumatologia.length-1].PACIENTE +"-"+ traumatologia[traumatologia.length-1].PREVISION
+
+document.getElementById("parrafo").innerHTML += `<h2> - TRAUMATOLOGÍA</h2><p>Primera atenvión: ${primero_traumatologia}</p><p>Última atención: ${ultimo_traumatologia}</p><hr/>`
+
+// Primera y última atención paciente Dental
+let primero_dental = dental[0].PACIENTE +"-"+ dental[0].PREVISION
+let ultima_dental = dental[dental.length-1].PACIENTE +"-"+ dental[dental.length-1].PREVISION
+
+document.getElementById("parrafo").innerHTML += `<h2> - DENTAL</h2><p>Primera atención: ${primero_dental}<p/><p>Última atención: ${ultima_dental}</p><hr/>` 
